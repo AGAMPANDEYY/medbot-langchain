@@ -20,4 +20,4 @@ EXPOSE 8000
 # ENV ENV_VAR_NAME value
 
 # Run the main script
-CMD ["python", "api/main.py"]
+CMD ["streamlit","run", "api/st_app.py"]
