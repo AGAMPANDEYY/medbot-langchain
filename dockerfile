@@ -1,3 +1,7 @@
+
+# To run docker go to CLI type docker build -t medbot-image . (or other tag that you wish) 
+# docker run -p 8501:8501 medbot-image  #port 8501 for streamlit st_app.py and 8000 for fastapi app main.py
+
 # Use the official Python image as a base image
 FROM python:3.10-slim
 
@@ -17,7 +21,8 @@ RUN pip install streamlit
 COPY . .
 
 # Expose the port that the application runs on (if you are running a FastAPI server, for example)
-EXPOSE 8000
+# for FastAPI use port 8000 while for Streamlit use port 8501
+EXPOSE 8501
 
 # Define environment variables (optional, if you need any specific configs)
 # ENV ENV_VAR_NAME value
