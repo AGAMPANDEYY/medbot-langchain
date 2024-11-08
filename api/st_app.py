@@ -20,6 +20,9 @@ Limitations::
     - Chunking strategy followed is Recurssive Character spliter 
     - Retriver is Cosine similarity
 
+
+    CHANGE THE FILE PATH WHEN RUNNING STREAMLIT LOCALLY TO FULL PATH AND WHEN DOCKERM CHANGE IT TO Relative to app
+
 '''
 
 # Load environment variables
@@ -122,14 +125,18 @@ st.markdown("""
             box-shadow: 0 6px 8px rgba(0,0,0,0.2);
         }
         
+
         /* Typing indicator */
         .typing-indicator {
-            background-color: #e3f2fd;
+            background-color: #cfd8dc;  /* Darker background for better contrast */
+            color: #1a1a1a;  /* Darker text color for visibility */
             padding: 10px;
             border-radius: 10px;
             margin: 10px 0;
             animation: pulse 1.5s infinite;
+            font-weight: bold;
         }
+            
         
         @keyframes pulse {
             0% { opacity: 0.6; }
@@ -143,8 +150,9 @@ st.markdown("""
 with st.sidebar:
 
     # Use os.path.join for a relative path
-    image_path=r"C:\Agam\Work\medbot\api\static\media\medbot-logo2.png"
-    image=Image.open(image_path)
+    #image_path="/app/api/static/media/medbot-logo2.png" #USE INCASE OF DOCKER
+    image_path=r"C:\Agam\Work\medbot-langchain\api\static\media\medbot-logo2.png" #USE INCASE OF STREAMLIT LOCAL HOST
+    image=Image.open(image_path) 
     st.image(image)
     st.markdown("### About MedBot")
     st.write("""

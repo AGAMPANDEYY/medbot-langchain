@@ -64,7 +64,8 @@ class RAGPipeline:
         model = Ollama(model=model_name)
         embeddings = OllamaEmbeddings(model=model_name)
         parser = StrOutputParser()
-        pdf_path = r"C:\Agam\Work\medbot\dataset\Gynaecology-DC-Dutta.pdf"
+        #pdf_path = "/app/dataset/Gynaecology-DC-Dutta.pdf" # USE INCASE OF DOCKER 
+        pdf_path=r"C:\Agam\Work\medbot-langchain\dataset\Gynaecology-DC-Dutta.pdf" #USE INCASE OF STREAMLIT LOCAL HOST
 
         pinecone_api_key = os.getenv("PINECONE_API_KEY")
         if not pinecone_api_key:
