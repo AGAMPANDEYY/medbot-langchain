@@ -60,6 +60,9 @@ For version 1 of the chatbot, I prioritized data that would be comprehensive and
 2. **QA Dataset** – Aggregated from various medical Q&A websites.
 3. **Web-Scraped Articles** – Supplementary information from reputable sources.
 
+![image](https://github.com/user-attachments/assets/57390ef2-dad4-42d9-955e-67834b5f31a3)
+
+
 ### Reasoning
 Starting with the PDF-based dataset ensured a solid foundation of structured, authoritative knowledge. Later versions can incorporate more diverse datasets to improve answer specificity.
 
