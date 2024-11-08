@@ -10,6 +10,9 @@ COPY requirements.txt .
 # Install any dependencies specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Install Streamlit (if not already in requirements.txt)
+RUN pip install streamlit
+
 # Copy the rest of the application code into the container
 COPY . .
 
