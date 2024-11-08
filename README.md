@@ -1,6 +1,8 @@
 
 # RAG Model for Gynecological Education Chatbot
 
+Refer to this [Notion Link](https://www.notion.so/AI-Bot-Gynecological-Education-12ea18b0b202809aa96aed882ee6af3c?pvs=4) for detailed documenation drafts.
+
 ![image](https://github.com/user-attachments/assets/b78951f4-889f-4957-beb1-bf893b21b209)
 
 
