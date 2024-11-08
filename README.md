@@ -132,3 +132,14 @@ This project is currently in its initial version, focusing on foundational setup
 ## Conclusion
 
 This RAG-based Gynecological Education Chatbot was developed with a focus on adaptability and efficiency, considering CPU limitations and resource constraints. The project aims to provide accessible, accurate, and relevant medical information through a local setup, making it suitable for educational purposes in environments with limited GPU access.
+
+### Running with Docker
+
+
+```bash
+
+cd .
+docker build -t medbot-image .
+docker run -p 8000:8000 medbot-image
+
+```
