@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Medical Bot</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Medical Chatbot</h1>
+            <p>Your health assistant</p>
+        </header>
+        <main>
+            <div id="chatbox" class="chatbox">
+                <!-- Chat messages will be displayed here -->
+            </div>
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="Ask your question..." />
+                <button id="send-button">Send</button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const sendButton = document.getElementById('send-button');
+        const userInput = document.getElementById('user-input');
+        const chatbox = document.getElementById('chatbox');
+
+        sendButton.addEventListener('click', async () => {
+            const question = userInput.value;
+            if (!question) return;
+
+            // Display user's question
+            chatbox.innerHTML += `<div class="message user-message">${question}</div>`;
+            userInput.value = '';
+
+            // Send question to the backend
+            const response = await fetch('/ask', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ question })
+            });
+
+            const data = await response.json();
+            chatbox.innerHTML += `<div class="message bot-message">${data.answer}</div>`;
+        });
+    </script>
+</body>
+</html>

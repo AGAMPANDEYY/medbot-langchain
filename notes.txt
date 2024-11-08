@@ -1,0 +1,85 @@
+1. Running fastapi app
+uvicorn api.main:app --reload
+
+uvicorn your_app:app --reload --debug  #for debugging 
+
+ 
+2. Vercel-- 
+
+build fastapi application
+vercel.json 
+requirements.txt
+npm i -g vercel
+vercel .  #builds vercel app
+
+
+To deploy your FastAPI app on Vercel, you’ll need a vercel.json configuration file to specify the settings for Vercel’s deployment. Here’s how to set up everything step-by-step:
+
+Step 1: Set Up the vercel.json Configuration
+Create a vercel.json file in the root directory of your project (at the same level as your api folder, based on your directory structure).
+
+Here’s a basic template for the vercel.json configuration file:
+
+json
+Copy code
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "main.py",
+      "use": "@vercel/python",
+      "config": { "runtime": "python3.9" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "main.py"
+    }
+  ]
+}
+Explanation of each part:
+
+version: Vercel’s configuration version (set to 2 for all modern deployments).
+builds: Specifies what Vercel should build.
+"src": "main.py": Points to your main FastAPI entry point file.
+"use": "@vercel/python": Tells Vercel to use the Python runtime.
+"config": { "runtime": "python3.9" }: Specifies Python 3.9. Adjust if your project requires a different Python version.
+routes: Defines how incoming requests are routed to the FastAPI application.
+"src": "/(.*)": Matches any route.
+"dest": "main.py": Directs all requests to your main.py file.
+Step 2: Adjust main.py for Vercel Compatibility
+Vercel requires a specific setup for FastAPI to work correctly. In main.py, you should expose an ASGI application instance (using app if that’s the name of your FastAPI instance).
+
+Ensure main.py looks something like this:
+
+python
+Copy code
+from fastapi import FastAPI
+from rag_pipeline import RAGPipeline
+from pydantic import BaseModel
+
+app = FastAPI()
+
+class QueryRequest(BaseModel):
+    question: str
+
+pipeline = RAGPipeline()
+
+@app.post("/ask")
+async def ask_question(request: QueryRequest):
+    answer = pipeline.run_medbot("path/to/your/pdf", request.question)
+    return {"answer": answer}
+Step 3: Ensure Environment Variables Are Set on Vercel
+If you’re using environment variables (e.g., for PINECONE_API_KEY), you need to set these on Vercel:
+
+Go to your Vercel dashboard.
+Select your project.
+Go to Settings > Environment Variables.
+Add your environment variables (PINECONE_API_KEY, etc.) and their respective values.
+Step 4: Deploy to Vercel
+Initialize your project as a Git repository (if it isn’t already).
+Push your code to a Git platform like GitHub, GitLab, or Bitbucket.
+Connect your Vercel account to the repository and choose your project to deploy.
+Vercel will detect the vercel.json file and automatically set up the deployment based on your configuration.
+This should deploy your FastAPI application to Vercel. If you encounter errors, you can check the Vercel logs for debugging information.
