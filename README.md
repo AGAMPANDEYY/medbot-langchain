@@ -1,6 +1,8 @@
-# medbot-langchain
 
 # RAG Model for Gynecological Education Chatbot
+
+![image](https://github.com/user-attachments/assets/b78951f4-889f-4957-beb1-bf893b21b209)
+
 
 This project is a Retrieval-Augmented Generation (RAG) model specifically designed to educate users on gynecological topics through a conversational chatbot. This chatbot leverages a Local Large Language Model (LLM) and is optimized to run on CPU, making it suitable for devices without a GPU. The pipeline integrates various tools and techniques to ensure accuracy, contextual memory, and efficiency in resource usage.
 
@@ -33,6 +35,9 @@ The development pipeline consists of the following steps:
 ---
 
 ## Model Selection
+
+![image](https://github.com/user-attachments/assets/c410af00-8840-4433-b1b1-83765b2643b3)
+
 
 ### Approach
 Since the system runs entirely locally on a CPU, model selection was a critical step. Initially, I explored different medical LLMs by examining the medical leaderboard on [Hugging Face](https://huggingface.co/blog/leaderboard-medicalllm). Options included:
