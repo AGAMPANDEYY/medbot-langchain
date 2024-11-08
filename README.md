@@ -8,6 +8,50 @@ Refer to this [Notion Link](https://www.notion.so/AI-Bot-Gynecological-Education
 
 This project is a Retrieval-Augmented Generation (RAG) model specifically designed to educate users on gynecological topics through a conversational chatbot. This chatbot leverages a Local Large Language Model (LLM) and is optimized to run on CPU, making it suitable for devices without a GPU. The pipeline integrates various tools and techniques to ensure accuracy, contextual memory, and efficiency in resource usage.
 
+## Running the Project
+
+### 1. Run Using Docker
+
+To run the project with Docker, follow these steps:
+
+1.1 **Build the Docker Image**
+    Open your CLI and execute the following command:
+
+     ```bash
+     docker build -t medbot-image .
+
+   You can replace `medbot-image` with any other tag you prefer.
+
+1.2 **Run the Docker Container**
+To start the container, run:
+
+  ```bash
+  docker run -p 8501:8501 medbot-image  # For Streamlit on port 8501
+  ```
+
+>[!Note]
+>To run the backend API, ensure that you use **port 8000** for the FastAPI app (`main.py`).
+
+
+### 2. Run Locally (Without Docker)
+
+Since this project depends on the **Ollama LLM model**, which is loaded locally on the CPU, Docker might encounter issues during inference. Therefore, to avoid these errors, it is recommended to run the project locally without Docker.
+
+#### Steps:
+
+2.1 **Update Paths**: Locate any relative paths in the project code, uncomment them, and replace them with absolute paths as necessary.
+
+2.2 **Run the Streamlit App**:
+   - Open a Bash terminal.
+   - Execute the following command:
+
+     ```bash
+     streamlit run st_app.py
+     ```
+
+   This will launch the Streamlit front end locally.
+
+
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Pipeline Overview](#pipeline-overview)
